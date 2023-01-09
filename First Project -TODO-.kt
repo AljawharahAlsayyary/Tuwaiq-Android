@@ -16,6 +16,7 @@ fun main() {
     Todo.ShowallTasks()
     Todo.changeTask(task1)
     Todo.ShowallTasks()
+    Todo.PrintaSpecificTask(task1.id)
 }
 data class Task (
     val id : Int,
@@ -30,20 +31,35 @@ class Todo () {
 
     fun ShowallTasks() {
         for (task in tasks) {
-            println("the tasks is : $task") }
+            println("the tasks is : $task")
+        }
     }
 
     fun Addtask(task: Task) {
-        tasks.add(task) }
+        tasks.add(task)
+    }
 
     fun RemoveTask(task: Task) {
-        if(tasks.remove(task))
+        if (tasks.remove(task))
             println("the task has been removed")
-        else println("there is no task to remove") }
-
-    fun changeTask(task: Task) {
-        task.isCompleted =! task.isCompleted
-        println("the case isCompleted has been changed")
+        else println("there is no task to remove")
     }
-}
+
+    fun PrintaSpecificTask(id:Int) {
+        for (task in tasks) {
+            if (id == task.id) {
+                println(task)
+                return
+            }
+        }
+        println("not found")}
+
+
+        fun changeTask(task: Task) {
+            task.isCompleted = !task.isCompleted
+            println("the case isCompleted has been changed")}
+        }
+
+
+
 
